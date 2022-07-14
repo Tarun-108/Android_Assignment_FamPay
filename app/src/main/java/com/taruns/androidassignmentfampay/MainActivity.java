@@ -51,14 +51,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Response String", responseString[0]);
             }
 
+
             @Override
             public void onFailure(@NonNull Call<ResponseModel> call, @NonNull Throwable t) {
                 responseString[0] = t.getMessage();
                 Log.e("Response String", responseString[0]);
             }
         });
-
-
 
 
     }

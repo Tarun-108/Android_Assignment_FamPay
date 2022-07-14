@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/layout/card_hc1.xml" value="0.4" />
-        <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/layout/card_hc3.xml" value="0.2" />
+        <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/drawable-v24/ic_arrow_right.xml" value="0.1655" />
+        <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/layout/card_hc1.xml" value="0.536" />
+        <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/layout/card_hc3.xml" value="0.152" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/layout/card_hc5.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/layout/card_hc6.xml" value="0.4" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/AndroidAssignmentFamPay/app/src/main/res/layout/card_hc9.xml" value="0.253125" />
