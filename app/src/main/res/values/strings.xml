@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Android Assignment FamPay</string>
+    <string name="fampay">fampay</string>
+    <string name="big_display">Big display card with action</string>
+    <string name="this_is_a_s">This is a sample text for the subtitle that you can add to contextual cards</string>
+    <string name="_label">Action</string>
+    <string name="small_card_">Small card with arrow</string>
+    <string name="sambhav_ana">Save the streak \u00F0\u009F\u0094\u00A5</string>
+    <string name="for_helping">10-Day Savings Challenge</string>
+    <string name="small_displ">Small display card</string>
+    <string name="action">Action</string>
+    <string name="background_image">background_Image</string>
+    <string name="image_icon">image_icon</string>
+    <string name="right_arrow">Right Arrow</string>
+
 </resources>
