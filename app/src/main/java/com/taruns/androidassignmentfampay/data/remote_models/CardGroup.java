@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CardGroup {
 
-    int id;
+    int id, width, height;
     boolean is_scrollable;
     String name, design_type;
     List<Card> cards;
@@ -15,6 +15,22 @@ public class CardGroup {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public boolean isIs_scrollable() {
