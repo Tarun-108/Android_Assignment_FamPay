@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.taruns.androidassignmentfampay.data.remote_models.CardGroup;
+import com.taruns.androidassignmentfampay.data.remote_models.ResponseModel;
 import com.taruns.androidassignmentfampay.data.util.CardApi;
 
 import java.util.List;
@@ -33,25 +34,25 @@ public class MainActivity extends AppCompatActivity {
 
         CardApi cardApi = retrofit.create(CardApi.class);
 
-        Call<List<CardGroup>> call = cardApi.getCardGroups();
+        Call<ResponseModel> call = cardApi.getCardGroups();
 
-        call.enqueue(new Callback<List<CardGroup>>() {
+        call.enqueue(new Callback<ResponseModel>() {
             @Override
-            public void onResponse(@NonNull Call<List<CardGroup>> call, @NonNull Response<List<CardGroup>> response) {
+            public void onResponse(@NonNull Call<ResponseModel> call, @NonNull Response<ResponseModel> response) {
                 if(!response.isSuccessful()){
                     responseString[0] = response.code()+ "";
                     return;
                 }
-                List<CardGroup> cardGroups = response.body();
+                ResponseModel cardGroups = response.body();
 
                 assert cardGroups != null;
-                responseString[0] = cardGroups.toString();
+                responseString[0] = cardGroups.getCard_groups().get(0).getName() + "";
 
                 Log.d("Response String", responseString[0]);
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<CardGroup>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<ResponseModel> call, @NonNull Throwable t) {
                 responseString[0] = t.getMessage();
                 Log.e("Response String", responseString[0]);
             }

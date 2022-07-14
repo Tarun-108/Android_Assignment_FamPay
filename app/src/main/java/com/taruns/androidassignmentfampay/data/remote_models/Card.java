@@ -1,11 +1,13 @@
 package com.taruns.androidassignmentfampay.data.remote_models;
 
-import java.net.URL;
+import java.net.URI;
+import java.util.List;
 
 public class Card {
 
-    private String name, title, description;
-    private URL url;
+    private String name, title, description, url, bg_color;
+    private BgImage bg_image;
+    private List<Cta> cta;
     private Icon icon;
     private FormattedTitle formatted_title;
     private FormattedDescription formatted_description;
@@ -34,11 +36,11 @@ public class Card {
         this.description = description;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(URL url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 
@@ -66,9 +68,9 @@ public class Card {
         this.formatted_description = formatted_description;
     }
 
-    private class Icon {
+    private static class Icon {
         private String image_type;
-        private URL image_url;
+        private String image_url;
 
         public String getImage_type() {
             return image_type;
@@ -78,18 +80,19 @@ public class Card {
             this.image_type = image_type;
         }
 
-        public URL getImage_url() {
+        public String getImage_url() {
             return image_url;
         }
 
-        public void setImage_url(URL image_url) {
+        public void setImage_url(String image_url) {
             this.image_url = image_url;
         }
     }
 
-    private class FormattedTitle {
+    private static class FormattedTitle {
         private String text;
-        private Entities entities;
+        private String align;
+        private List<Entities> entities;
 
         public String getText() {
             return text;
@@ -99,19 +102,26 @@ public class Card {
             this.text = text;
         }
 
-        public Entities getEntities() {
+        public String getAlign() {
+            return align;
+        }
+
+        public void setAlign(String align) {
+            this.align = align;
+        }
+
+        public List<Entities> getEntities() {
             return entities;
         }
 
-        public void setEntities(Entities entities) {
+        public void setEntities(List<Entities> entities) {
             this.entities = entities;
         }
-
     }
 
-    private class FormattedDescription {
+    private static class FormattedDescription {
         private String text;
-        private Entities entities;
+        private List<Entities> entities;
 
         public String getText() {
             return text;
@@ -121,16 +131,16 @@ public class Card {
             this.text = text;
         }
 
-        public Entities getEntities() {
+        public List<Entities> getEntities() {
             return entities;
         }
 
-        public void setEntities(Entities entities) {
+        public void setEntities(List<Entities> entities) {
             this.entities = entities;
         }
     }
 
-    private class Entities {
+    private static class Entities {
         private String text;
         private String color;
 
@@ -148,6 +158,72 @@ public class Card {
 
         public void setColor(String color) {
             this.color = color;
+        }
+    }
+
+    private static class BgImage {
+
+        String image_url, image_type;
+        Double aspect_ratio;
+
+        public String getImage_url() {
+            return image_url;
+        }
+
+        public void setImage_url(String image_url) {
+            this.image_url = image_url;
+        }
+
+        public String getImage_type() {
+            return image_type;
+        }
+
+        public void setImage_type(String image_type) {
+            this.image_type = image_type;
+        }
+
+        public Double getAspect_ratio() {
+            return aspect_ratio;
+        }
+
+        public void setAspect_ratio(Double aspect_ratio) {
+            this.aspect_ratio = aspect_ratio;
+        }
+    }
+
+    private static class Cta {
+        private String bg_color, text, text_color, url;
+
+        public String getBg_color() {
+            return bg_color;
+        }
+
+        public void setBg_color(String bg_color) {
+            this.bg_color = bg_color;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public String getText_color() {
+            return text_color;
+        }
+
+        public void setText_color(String text_color) {
+            this.text_color = text_color;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
         }
     }
 }
