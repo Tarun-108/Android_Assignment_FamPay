@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
 
         EpoxyRecyclerView recyclerView = view.findViewById(R.id.home_recycler);
         recyclerView.buildModelsWith(epoxyController -> {
-            
+
         });
 
 
