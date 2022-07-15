@@ -1,82 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_outer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        card_view:cardBackgroundColor="@android:color/transparent"
-        card_view:cardCornerRadius="0dp"
-        card_view:cardElevation="0dp"
-        card_view:layout_constraintEnd_toEndOf="parent"
-        card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
-        card_view:layout_constraintBottom_toBottomOf="parent">
+    <data>
+        <variable
+            name="card"
+            type="com.taruns.androidassignmentfampay.data.remote_models.CardGroup" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_view_inner"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:id="@+id/card_view_outer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20sp"
-            card_view:cardBackgroundColor="#ffffff"
-            card_view:cardCornerRadius="8dp"
-            card_view:cardElevation="4dp">
+            card_view:cardBackgroundColor="@android:color/transparent"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardElevation="0dp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintBottom_toBottomOf="parent">
 
-            <RelativeLayout
-                android:id="@+id/item_hc6_base"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_inner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="20sp"
+                card_view:cardBackgroundColor="#ffffff"
+                card_view:cardCornerRadius="8dp"
+                card_view:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:id="@+id/item_hc6_base"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
 
-                <ImageView
-                    android:id="@+id/item_hc6_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20sp"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/image_icon"
-                    android:src="@drawable/ic_launcher_background" />
+                    <ImageView
+                        android:id="@+id/item_hc6_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20sp"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/image_icon"
+                        android:src="@drawable/ic_launcher_background" />
 
 
-                <TextView
-                    android:id="@+id/item_hc6_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10sp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_toStartOf="@+id/item_hc6_arrow"
-                    android:layout_toEndOf="@id/item_hc6_icon"
-                    android:ems="16"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/big_display"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/item_hc6_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_toStartOf="@+id/item_hc6_arrow"
+                        android:layout_toEndOf="@id/item_hc6_icon"
+                        android:ems="16"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/big_display"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
 
-                <ImageView
-                    android:id="@+id/item_hc6_arrow"
-                    android:layout_width="15sp"
-                    android:layout_height="15sp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="@string/right_arrow"
-                    android:layout_marginEnd="10sp" />
+                    <ImageView
+                        android:id="@+id/item_hc6_arrow"
+                        android:layout_width="15sp"
+                        android:layout_height="15sp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/right_arrow"
+                        android:layout_marginEnd="10sp" />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
 
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

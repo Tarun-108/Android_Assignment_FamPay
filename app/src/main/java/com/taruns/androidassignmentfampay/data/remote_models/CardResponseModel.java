@@ -2,7 +2,7 @@ package com.taruns.androidassignmentfampay.data.remote_models;
 
 import java.util.List;
 
-public class ResponseModel {
+public class CardResponseModel {
     private List<CardGroup> card_groups;
 
     public List<CardGroup> getCard_groups() {

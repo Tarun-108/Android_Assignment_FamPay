@@ -1,22 +1,12 @@
 package com.taruns.androidassignmentfampay;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 
-import com.taruns.androidassignmentfampay.data.remote_models.CardGroup;
-import com.taruns.androidassignmentfampay.data.remote_models.ResponseModel;
-import com.taruns.androidassignmentfampay.data.util.CardApi;
+import com.taruns.androidassignmentfampay.ui.home.HomeFragment;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.moshi.MoshiConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,40 +15,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final String[] responseString = new String[1];
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://run.mocky.io/v3/")
-                .addConverterFactory(MoshiConverterFactory.create())
-                .build();
-
-        CardApi cardApi = retrofit.create(CardApi.class);
-
-        Call<ResponseModel> call = cardApi.getCardGroups();
-
-        call.enqueue(new Callback<ResponseModel>() {
-            @Override
-            public void onResponse(@NonNull Call<ResponseModel> call, @NonNull Response<ResponseModel> response) {
-                if(!response.isSuccessful()){
-                    responseString[0] = response.code()+ "";
-                    return;
-                }
-                ResponseModel cardGroups = response.body();
-
-                assert cardGroups != null;
-                responseString[0] = cardGroups.getCard_groups().get(0).getName() + "";
-
-                Log.d("Response String", responseString[0]);
-            }
-
-
-            @Override
-            public void onFailure(@NonNull Call<ResponseModel> call, @NonNull Throwable t) {
-                responseString[0] = t.getMessage();
-                Log.e("Response String", responseString[0]);
-            }
-        });
-
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.container, new HomeFragment());
+        ft.commit();
 
     }
+
+
+
 }
