@@ -1,7 +1,5 @@
 package com.taruns.androidassignmentfampay.data.remote_models;
 
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Card {
@@ -25,6 +23,7 @@ public class Card {
     public String getBg_color() {
         return bg_color;
     }
+
 
     public Gradient getBg_gradient() {
         return bg_gradient;

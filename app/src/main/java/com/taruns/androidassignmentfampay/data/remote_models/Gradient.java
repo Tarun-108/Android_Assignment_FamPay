@@ -1,22 +1,22 @@
 package com.taruns.androidassignmentfampay.data.remote_models;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Gradient {
 
-    private ArrayList<String> colors;
+    private List<String> colors;
     private int angle;
 
-    public Gradient(ArrayList<String> colors ){
+    public Gradient(List<String> colors ){
         this.colors = colors;
         angle = 0;
     }
-    public Gradient(ArrayList<String> colors, int angle ){
+    public Gradient(List<String> colors, int angle ){
         this.colors = colors;
         this.angle = angle;
     }
 
-    public ArrayList<String> getColors() {
+    public List<String> getColors() {
         return colors;
     }
 
@@ -28,7 +28,7 @@ public class Gradient {
         this.angle = angle;
     }
 
-    public void setColors(ArrayList<String> colors) {
+    public void setColors(List<String> colors) {
         this.colors = colors;
     }
 
