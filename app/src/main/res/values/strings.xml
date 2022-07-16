@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Assignment FamPay</string>
+    <string name="app_name">FamPay AAL3</string>
     <string name="fampay">FamPay</string>
     <string name="big_display">Big display card with action</string>
     <string name="this_is_a_s">This is a sample text for the subtitle that you can add to contextual cards</string>
