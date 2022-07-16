@@ -35,9 +35,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_margin="10sp"
+                android:layout_margin="5dp"
                 android:onClick="@{() -> viewModel.onCardClick(card.url)}"
-                app:backgroundColor="@{card.bg_color}"
+                card_view:cardBackgroundColor="@color/white"
                 card_view:cardCornerRadius="8dp"
                 card_view:cardElevation="4dp">
 
@@ -55,7 +55,7 @@
                         android:layout_marginStart="20sp"
                         android:contentDescription="@string/image_icon"
                         android:scaleType="centerCrop"
-                        app:imageURL="@{card.icon.image_url}"/>
+                        app:imageURL="@{card.icon.image_url}" />
 
 
                     <TextView

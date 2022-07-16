@@ -137,4 +137,8 @@ public class Card {
         view.setLayoutParams(layoutParams);
     }
 
+
+
+
+
 }

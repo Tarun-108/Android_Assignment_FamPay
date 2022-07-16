@@ -12,6 +12,8 @@
             name="viewModel"
             type="com.taruns.androidassignmentfampay.ui.home.HomeViewModel" />
 
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,9 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                card_view:cardBackgroundColor="@color/white"
+                android:layout_margin="5dp"
                 android:onClick="@{() -> viewModel.onCardClick(card.url)}"
-                app:backgroundColor="@{card.bg_color}"
                 card_view:cardCornerRadius="12dp"
                 card_view:cardElevation="4dp">
 
@@ -49,10 +51,11 @@
 
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/remind_later_btn"
-                        android:layout_width="75dp"
-                        android:layout_height="62dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="36dp"
                         android:layout_marginTop="80dp"
+                        android:backgroundTint="@color/white"
                         android:src="@drawable/remind_later_icon"
                         card_view:layout_constraintStart_toStartOf="parent"
                         card_view:layout_constraintTop_toTopOf="parent" />
@@ -62,16 +65,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="36dp"
-                        android:background="@color/white"
                         android:layout_marginBottom="80dp"
                         android:src="@drawable/dismiss_icon"
+                        android:backgroundTint="@color/white"
                         card_view:layout_constraintStart_toStartOf="parent"
                         card_view:layout_constraintBottom_toBottomOf="parent" />
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/hc3_collapsable"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         card_view:cardCornerRadius="12dp"
+                        app:backgroundColor="@{card.bg_color}"
+                        android:onClick="@{(view) -> viewModel.onLongPressResize(view)}"
                         card_view:layout_constraintBottom_toBottomOf="parent"
                         card_view:layout_constraintEnd_toEndOf="parent"
                         card_view:layout_constraintStart_toStartOf="parent"

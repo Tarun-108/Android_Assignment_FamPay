@@ -30,7 +30,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingVertical="24dp">
+                        android:paddingVertical="20dp">
 
                         <TextView
                             android:id="@+id/fampay"
@@ -81,6 +81,7 @@
                             android:id="@+id/home_recycler"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:paddingVertical="8dp"
                             android:layout_margin="2dp" />
 
 

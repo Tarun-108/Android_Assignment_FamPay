@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_margin="10sp"
+                android:layout_margin="5dp"
                 android:onClick="@{() -> viewModel.onCardClick(card.url)}"
                 app:backgroundColor = "@{card.bg_color}"
                 card_view:cardCornerRadius="8dp"

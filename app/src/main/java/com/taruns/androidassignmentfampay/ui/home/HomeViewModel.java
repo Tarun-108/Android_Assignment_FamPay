@@ -1,10 +1,12 @@
 package com.taruns.androidassignmentfampay.ui.home;
 
+import android.animation.ObjectAnimator;
 import android.app.Application;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,8 @@ public class HomeViewModel extends AndroidViewModel {
     private Intent browserIntent;
     private MutableLiveData<Intent> browserIntentLiveData;
 
+    private Boolean opened;
+
 
 
     public HomeViewModel(@NonNull Application application) {
@@ -43,6 +47,7 @@ public class HomeViewModel extends AndroidViewModel {
         cardGroupRepository.init();
         cardGroupsLiveData = cardGroupRepository.getCardResponseModel();
         browserIntentLiveData = new MutableLiveData<>();
+        opened = false;
     }
 
     public LiveData<CardResponseModel> getCardGroupsLiveData(){
@@ -53,6 +58,21 @@ public class HomeViewModel extends AndroidViewModel {
         browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         browserIntentLiveData.postValue(browserIntent);
     }
+
+
+    public void onLongPressResize(View v){
+        if (!opened) {
+            ObjectAnimator animation = ObjectAnimator.ofFloat(v, "translationX", 450f);
+            animation.setDuration(250);
+            animation.start();
+        } else {
+            ObjectAnimator animation = ObjectAnimator.ofFloat(v, "translationX", 0f);
+            animation.setDuration(250);
+            animation.start();
+        }
+        opened = !opened;
+    }
+
 
     public LiveData<Intent> getBrowserIntentLiveData(){return browserIntentLiveData;}
 

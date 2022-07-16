@@ -1,5 +1,6 @@
 package com.taruns.androidassignmentfampay.ui.home;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -27,7 +28,6 @@ import com.taruns.androidassignmentfampay.Hc9BindingModel_;
 import com.taruns.androidassignmentfampay.R;
 import com.taruns.androidassignmentfampay.data.remote_models.Card;
 import com.taruns.androidassignmentfampay.data.remote_models.CardGroup;
-import com.taruns.androidassignmentfampay.data.remote_models.CardResponseModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +44,8 @@ public class HomeFragment extends Fragment {
     private HomeViewModel viewModel;
     private EpoxyRecyclerView recyclerView;
     private List<CardGroup> cardGroups;
+
+    private Boolean opened = false;
 
 
 
@@ -86,6 +88,8 @@ public class HomeFragment extends Fragment {
 
 
 
+
+
         return view;
     }
 
@@ -125,9 +129,13 @@ public class HomeFragment extends Fragment {
                         break;
                     }
                     case "HC9":{
+
                         List<Hc9BindingModel_> bindingModel_s = new ArrayList<>();
                         for (Card card: cardGroup.getCards()) {
-                            bindingModel_s.add(new Hc9BindingModel_().id(0).card(card).height(cardGroup.getHeight()).viewModel(viewModel));
+                            bindingModel_s.add(new Hc9BindingModel_().id(0)
+                                    .card(card)
+                                    .height(cardGroup.getHeight())
+                                    .viewModel(viewModel));
                         }
                         CarouselModel_ carouselModel_ = new CarouselModel_().id(cardGroup.getId()).models(bindingModel_s);
                         epoxyController.add(carouselModel_);

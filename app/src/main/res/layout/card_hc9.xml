@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 android:minHeight="40dp"
                 android:onClick="@{() -> viewModel.onCardClick(card.url)}"
                 card_view:cardBackgroundColor="#ffffff"
@@ -48,14 +48,14 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/item_hc9_base"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
 
                     <ImageView
                         android:id="@+id/item_hc9_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/background_image"
