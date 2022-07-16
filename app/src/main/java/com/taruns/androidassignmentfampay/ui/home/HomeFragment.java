@@ -70,6 +70,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        viewModel.getBrowserIntentLiveData().observe(this, this::startActivity);
+
     }
 
 
@@ -94,12 +96,11 @@ public class HomeFragment extends Fragment {
 
             for (CardGroup cardGroup: cardGroups) {
 
-
                 switch (cardGroup.getDesign_type()){
                     case "HC3":{
                         List<Hc3BindingModel_> bindingModel_s = new ArrayList<>();
                         for (Card card: cardGroup.getCards()) {
-                            bindingModel_s.add(new Hc3BindingModel_().id(0).card(card));
+                            bindingModel_s.add(new Hc3BindingModel_().id(0).card(card).viewModel(viewModel));
                         }
                         CarouselModel_ carouselModel_ = new CarouselModel_().id(cardGroup.getId()).models(bindingModel_s);
                         epoxyController.add(carouselModel_);
@@ -108,7 +109,7 @@ public class HomeFragment extends Fragment {
                     case "HC5":{
                         List<Hc5BindingModel_> bindingModel_s = new ArrayList<>();
                         for (Card card: cardGroup.getCards()) {
-                            bindingModel_s.add(new Hc5BindingModel_().id(0).card(card));
+                            bindingModel_s.add(new Hc5BindingModel_().id(0).card(card).viewModel(viewModel));
                         }
                         CarouselModel_ carouselModel_ = new CarouselModel_().id(cardGroup.getId()).models(bindingModel_s);
                         epoxyController.add(carouselModel_);
@@ -117,7 +118,7 @@ public class HomeFragment extends Fragment {
                     case "HC6":{
                         List<Hc6BindingModel_> bindingModel_s = new ArrayList<>();
                         for (Card card: cardGroup.getCards()) {
-                            bindingModel_s.add(new Hc6BindingModel_().id(0).card(card));
+                            bindingModel_s.add(new Hc6BindingModel_().id(0).card(card).viewModel(viewModel));
                         }
                         CarouselModel_ carouselModel_ = new CarouselModel_().id(cardGroup.getId()).models(bindingModel_s);
                         epoxyController.add(carouselModel_);
@@ -126,7 +127,7 @@ public class HomeFragment extends Fragment {
                     case "HC9":{
                         List<Hc9BindingModel_> bindingModel_s = new ArrayList<>();
                         for (Card card: cardGroup.getCards()) {
-                            bindingModel_s.add(new Hc9BindingModel_().id(0).card(card).height(cardGroup.getHeight()));
+                            bindingModel_s.add(new Hc9BindingModel_().id(0).card(card).height(cardGroup.getHeight()).viewModel(viewModel));
                         }
                         CarouselModel_ carouselModel_ = new CarouselModel_().id(cardGroup.getId()).models(bindingModel_s);
                         epoxyController.add(carouselModel_);
@@ -137,13 +138,13 @@ public class HomeFragment extends Fragment {
                         List<Hc1BindingModel_> bindingModel_s = new ArrayList<>();
                         if(cardGroup.isIs_scrollable()){
                             for (Card card: cardGroup.getCards()) {
-                                bindingModel_s.add(new Hc1BindingModel_().id(0).card(card));
+                                bindingModel_s.add(new Hc1BindingModel_().id(0).card(card).viewModel(viewModel));
                             }
                             CarouselModel_ carouselModel_ = new CarouselModel_().id(cardGroup.getId()).models(bindingModel_s);
                             epoxyController.add(carouselModel_);
                         }else{
                             for (Card card: cardGroup.getCards()) {
-                                Hc1BindingModel_ bindingModel_ = new Hc1BindingModel_().id(0).card(card);
+                                Hc1BindingModel_ bindingModel_ = new Hc1BindingModel_().id(0).card(card).viewModel(viewModel);
                                 bindingModel_s.add(bindingModel_);
                             }
                             CarouselModel_ carouselModel_ = new CarouselModel_().id(cardGroup.getId()).models(bindingModel_s);

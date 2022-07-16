@@ -5,6 +5,10 @@
 
     <data>
         <variable
+            name="viewModel"
+            type="com.taruns.androidassignmentfampay.ui.home.HomeViewModel" />
+
+        <variable
             name="card"
             type="com.taruns.androidassignmentfampay.data.remote_models.Card" />
     </data>
@@ -33,6 +37,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_margin="10sp"
+                android:onClick="@{() -> viewModel.onCardClick(card.url)}"
                 app:backgroundColor = "@{card.bg_color}"
                 card_view:cardCornerRadius="8dp"
                 card_view:cardElevation="4dp">

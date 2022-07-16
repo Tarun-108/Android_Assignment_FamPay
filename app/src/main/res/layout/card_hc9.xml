@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.taruns.androidassignmentfampay.ui.home.HomeViewModel" />
+
+        <variable
             name="height"
             type="int" />
 
@@ -25,7 +29,6 @@
             android:layout_height="wrap_content"
             card_view:cardBackgroundColor="@color/screen_background"
             card_view:cardCornerRadius="0dp"
-            card_view:cardElevation="0dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -38,6 +41,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:minHeight="40dp"
+                android:onClick="@{() -> viewModel.onCardClick(card.url)}"
                 card_view:cardBackgroundColor="#ffffff"
                 card_view:cardCornerRadius="12dp"
                 card_view:cardElevation="4dp">

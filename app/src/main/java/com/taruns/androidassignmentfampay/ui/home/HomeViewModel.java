@@ -1,6 +1,8 @@
 package com.taruns.androidassignmentfampay.ui.home;
 
 import android.app.Application;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,6 +29,8 @@ public class HomeViewModel extends AndroidViewModel {
 
     private CardGroupRepository cardGroupRepository;
     private LiveData<CardResponseModel> cardGroupsLiveData;
+    private Intent browserIntent;
+    private MutableLiveData<Intent> browserIntentLiveData;
 
 
 
@@ -38,13 +42,18 @@ public class HomeViewModel extends AndroidViewModel {
         cardGroupRepository = new CardGroupRepository();
         cardGroupRepository.init();
         cardGroupsLiveData = cardGroupRepository.getCardResponseModel();
+        browserIntentLiveData = new MutableLiveData<>();
     }
 
     public LiveData<CardResponseModel> getCardGroupsLiveData(){
         return cardGroupsLiveData;
     }
 
+    public void onCardClick(String url){
+        browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        browserIntentLiveData.postValue(browserIntent);
+    }
 
-
+    public LiveData<Intent> getBrowserIntentLiveData(){return browserIntentLiveData;}
 
 }
