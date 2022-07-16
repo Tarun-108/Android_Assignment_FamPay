@@ -1,7 +1,7 @@
 # Android_Assignment_FamPay
 AAL3 Android Assignment
 
-NOTE: APK is atttached to the repo named as "app-release.apk"
+NOTE: APK is atttached to the repo named as "app-debug.apk"
 
 ## TimeLine I followed
 
