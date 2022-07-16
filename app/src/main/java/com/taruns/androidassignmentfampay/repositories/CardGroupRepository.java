@@ -52,7 +52,7 @@ public class CardGroupRepository{
     }
 
 
-    public MutableLiveData<CardResponseModel> getCardResponseModel() {
+    public void fetchData() {
 
 
         cardGroupCall.enqueue(new Callback<CardResponseModel>() {
@@ -81,7 +81,10 @@ public class CardGroupRepository{
         });
 
 
-        return cardResponseModelMutableLiveData;
-
     }
+
+    public MutableLiveData<CardResponseModel> getCardResponseModel(){
+        return cardResponseModelMutableLiveData;
+    }
+
 }

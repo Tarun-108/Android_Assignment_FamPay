@@ -1,48 +1,28 @@
 package com.taruns.androidassignmentfampay.ui.home;
 
-import static java.security.AccessController.getContext;
-
 import android.animation.ObjectAnimator;
 import android.app.Application;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
-import com.bumptech.glide.Glide;
 import com.taruns.androidassignmentfampay.data.remote_models.Card;
-import com.taruns.androidassignmentfampay.data.remote_models.CardGroup;
 import com.taruns.androidassignmentfampay.data.remote_models.CardResponseModel;
 import com.taruns.androidassignmentfampay.repositories.CardGroupRepository;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class HomeViewModel extends AndroidViewModel {
 
 
-
-    private CardGroupRepository cardGroupRepository;
     private MutableLiveData<CardResponseModel> cardGroupsLiveData;
-    private Intent browserIntent;
     private MutableLiveData<Intent> browserIntentLiveData;
     private MutableLiveData<Pair<Boolean,String>> dismissedLiveData;
-
+    private CardGroupRepository cardGroupRepository;
     private Boolean opened;
 
 
@@ -54,10 +34,15 @@ public class HomeViewModel extends AndroidViewModel {
     public void init() {
         cardGroupRepository = new CardGroupRepository();
         cardGroupRepository.init();
+        cardGroupRepository.fetchData();
         cardGroupsLiveData = cardGroupRepository.getCardResponseModel();
         browserIntentLiveData = new MutableLiveData<>();
         dismissedLiveData = new MutableLiveData<>();
         opened = false;
+    }
+
+    public void reInitializeRepoData(){
+        cardGroupRepository.fetchData();
     }
 
     public LiveData<CardResponseModel> getCardGroupsLiveData(){
@@ -68,7 +53,7 @@ public class HomeViewModel extends AndroidViewModel {
 
 
     public void onCardClick(String url){
-        browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         browserIntentLiveData.postValue(browserIntent);
     }
 
@@ -77,15 +62,14 @@ public class HomeViewModel extends AndroidViewModel {
     public LiveData<Intent> getBrowserIntentLiveData(){return browserIntentLiveData;}
 
     public void onLongPressResize(View v){
+        ObjectAnimator animation;
         if (!opened) {
-            ObjectAnimator animation = ObjectAnimator.ofFloat(v, "translationX", 450f);
-            animation.setDuration(250);
-            animation.start();
+            animation = ObjectAnimator.ofFloat(v, "translationX", 450f);
         } else {
-            ObjectAnimator animation = ObjectAnimator.ofFloat(v, "translationX", 0f);
-            animation.setDuration(250);
-            animation.start();
+            animation = ObjectAnimator.ofFloat(v, "translationX", 0f);
         }
+        animation.setDuration(250);
+        animation.start();
         opened = !opened;
     }
 

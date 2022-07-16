@@ -1,6 +1,7 @@
 package com.taruns.androidassignmentfampay.ui.home;
 
 import android.animation.ObjectAnimator;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,11 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.airbnb.epoxy.AutoModel;
@@ -48,6 +51,9 @@ public class HomeFragment extends Fragment {
     private EpoxyRecyclerView recyclerView;
     private List<CardGroup> cardGroups;
     private SharedPreferences prefs;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    ProgressBar progressBar;
 
 
 
@@ -86,6 +92,18 @@ public class HomeFragment extends Fragment {
 
 
         recyclerView = view.findViewById(R.id.home_recycler);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_home);
+        progressBar = view.findViewById(R.id.progress_circular);
+        progressBar.setVisibility(View.VISIBLE);
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+//            viewModel.reInitializeRepoData();
+            if(cardGroups != null){
+                swipeRefreshLayout.setRefreshing(false);
+                updateUI(cardGroups);
+            }
+        });
+
 
 
         viewModel.getDismissedLiveData().observe(getViewLifecycleOwner(), booleanStringPair -> {
@@ -175,6 +193,9 @@ public class HomeFragment extends Fragment {
                 }
 
             }
+
+            progressBar.setVisibility(View.GONE);
+
             return null;
         });
 
