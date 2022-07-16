@@ -16,7 +16,11 @@ import android.view.ViewGroup;
 import com.airbnb.epoxy.AutoModel;
 import com.airbnb.epoxy.EpoxyController;
 import com.airbnb.epoxy.EpoxyRecyclerView;
+import com.taruns.androidassignmentfampay.Hc1BindingModel_;
 import com.taruns.androidassignmentfampay.Hc3BindingModel_;
+import com.taruns.androidassignmentfampay.Hc5BindingModel_;
+import com.taruns.androidassignmentfampay.Hc6BindingModel_;
+import com.taruns.androidassignmentfampay.Hc9BindingModel_;
 import com.taruns.androidassignmentfampay.R;
 import com.taruns.androidassignmentfampay.data.remote_models.Card;
 import com.taruns.androidassignmentfampay.data.remote_models.CardGroup;
@@ -84,7 +88,11 @@ public class HomeFragment extends Fragment {
 
         recyclerView.withModels(epoxyController -> {
 
-            epoxyController.add(new Hc3BindingModel_().id(0).card(cardGroups.get(6).getCards().get(0)));
+            epoxyController.add(new Hc3BindingModel_().id(0).card(cardGroups.get(0).getCards().get(0)));
+            epoxyController.add(new Hc6BindingModel_().id(0).card(cardGroups.get(1).getCards().get(0)));
+            epoxyController.add(new Hc5BindingModel_().id(0).card(cardGroups.get(2).getCards().get(0)));
+            epoxyController.add(new Hc9BindingModel_().id(0).card(cardGroups.get(4).getCards().get(0)));
+            epoxyController.add(new Hc1BindingModel_().id(0).card(cardGroups.get(5).getCards().get(0)));
 
 
 

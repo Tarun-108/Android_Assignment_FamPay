@@ -10,6 +10,7 @@ import com.taruns.androidassignmentfampay.data.remote_models.CardGroup;
 import com.taruns.androidassignmentfampay.data.remote_models.CardResponseModel;
 import com.taruns.androidassignmentfampay.data.util.CardApi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,6 +24,16 @@ public class CardGroupRepository{
 
     private Call<CardResponseModel> cardGroupCall;
     private MutableLiveData<CardResponseModel> cardResponseModelMutableLiveData;
+
+    ArrayList<String> designTypesInSequence = new ArrayList<String>(){
+        {
+            add("HC3");
+            add("HC6");
+            add("HC5");
+            add("HC9");
+            add("HC1");
+        }
+    };
 
 
     public void init(){
@@ -41,14 +52,24 @@ public class CardGroupRepository{
     }
 
 
-    public LiveData<CardResponseModel> getCardResponseModel() {
+    public MutableLiveData<CardResponseModel> getCardResponseModel() {
 
 
         cardGroupCall.enqueue(new Callback<CardResponseModel>() {
             @Override
             public void onResponse(@NonNull Call<CardResponseModel> call, @NonNull Response<CardResponseModel> response) {
                 if(response.body() != null){
-                    cardResponseModelMutableLiveData.postValue(response.body());
+                    CardResponseModel cardResponseModel = response.body();
+                    ArrayList<CardGroup> inSequence = new ArrayList<>();
+                    for (String designType: designTypesInSequence) {
+                        for (CardGroup cardGroup: cardResponseModel.getCard_groups()) {
+                            if(cardGroup.getDesign_type().equalsIgnoreCase(designType)){
+                                inSequence.add(cardGroup);
+                            }
+                        }
+                    }
+                    cardResponseModel.setCard_groups(inSequence);
+                    cardResponseModelMutableLiveData.postValue(cardResponseModel);
                 }
 
             }
