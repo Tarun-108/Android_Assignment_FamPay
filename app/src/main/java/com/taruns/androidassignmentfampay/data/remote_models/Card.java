@@ -1,7 +1,12 @@
 package com.taruns.androidassignmentfampay.data.remote_models;
 
+import android.graphics.Color;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.cardview.widget.CardView;
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
@@ -110,6 +115,26 @@ public class Card {
     @BindingAdapter("imageURL")
     public static void loadImage(ImageView view, String url){
         Glide.with(view.getContext()).load(url).into(view);
+    }
+
+    @BindingAdapter("backgroundColor")
+    public static void changeBackgroundColor(CardView view, String bg_color){
+        if(bg_color == null){
+            bg_color = "#FBAF03";
+        }
+        view.setCardBackgroundColor(Color.parseColor(bg_color));
+    }
+
+    @BindingAdapter("onClick")
+    public static void clickRedirect(CardView view, String url){
+
+    }
+
+    @BindingAdapter("layout_height")
+    public static void setLayoutHeight(View view, int height) {
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        layoutParams.height = height;
+        view.setLayoutParams(layoutParams);
     }
 
 }
