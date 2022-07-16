@@ -13,16 +13,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.airbnb.epoxy.AutoModel;
 import com.airbnb.epoxy.EpoxyController;
 import com.airbnb.epoxy.EpoxyRecyclerView;
+import com.taruns.androidassignmentfampay.Hc3BindingModel_;
 import com.taruns.androidassignmentfampay.R;
+import com.taruns.androidassignmentfampay.data.remote_models.Card;
+import com.taruns.androidassignmentfampay.data.remote_models.CardGroup;
 import com.taruns.androidassignmentfampay.data.remote_models.CardResponseModel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 
 public class HomeFragment extends Fragment {
 
 
     private HomeViewModel viewModel;
+    private EpoxyRecyclerView recyclerView;
+    private List<CardGroup> cardGroups;
+
+
 
 
     public HomeFragment() {
@@ -40,13 +56,15 @@ public class HomeFragment extends Fragment {
         viewModel.init();
         viewModel.getCardGroupsLiveData().observe(this, cardResponseModel -> {
             if(cardResponseModel!=null){
-                Log.d("Response", cardResponseModel.getCard_groups().get(0).getName());
+                cardGroups = cardResponseModel.getCard_groups();
+                updateUI(cardGroups);
             }else{
                 Log.d("Response", "Null Response");
             }
         });
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,12 +73,32 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
 
-        EpoxyRecyclerView recyclerView = view.findViewById(R.id.home_recycler);
-        recyclerView.buildModelsWith(epoxyController -> {
+        recyclerView = view.findViewById(R.id.home_recycler);
 
-        });
 
 
         return view;
     }
+
+    private void updateUI(List<CardGroup> cardGroups) {
+
+        recyclerView.withModels(epoxyController -> {
+
+            epoxyController.add(new Hc3BindingModel_().id(0).card(cardGroups.get(6).getCards().get(0)));
+
+
+
+
+
+            return null;
+        });
+
+    }
+
+
+
+
+
+
+
 }

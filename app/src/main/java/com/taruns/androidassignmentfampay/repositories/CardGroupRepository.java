@@ -43,8 +43,6 @@ public class CardGroupRepository{
 
     public LiveData<CardResponseModel> getCardResponseModel() {
 
-        init();
-
 
         cardGroupCall.enqueue(new Callback<CardResponseModel>() {
             @Override

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="card"
-            type="com.taruns.androidassignmentfampay.data.remote_models.CardGroup" />
+            type="com.taruns.androidassignmentfampay.data.remote_models.Card" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

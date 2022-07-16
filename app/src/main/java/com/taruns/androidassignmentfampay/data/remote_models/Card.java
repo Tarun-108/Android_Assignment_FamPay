@@ -1,5 +1,11 @@
 package com.taruns.androidassignmentfampay.data.remote_models;
 
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class Card {
@@ -101,5 +107,9 @@ public class Card {
         this.formatted_description = formatted_description;
     }
 
+    @BindingAdapter("imageURL")
+    public static void loadImage(ImageView view, String url){
+        Glide.with(view.getContext()).load(url).into(view);
+    }
 
 }

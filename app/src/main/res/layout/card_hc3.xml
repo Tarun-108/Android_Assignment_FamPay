@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="card"
-            type="com.taruns.androidassignmentfampay.data.remote_models.CardGroup" />
+            type="com.taruns.androidassignmentfampay.data.remote_models.Card" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +30,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/item_hc3_parent"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/white"
@@ -65,7 +66,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         card_view:cardCornerRadius="12dp"
-                        android:backgroundTint="@color/card_background_blue"
                         card_view:layout_constraintBottom_toBottomOf="parent"
                         card_view:layout_constraintEnd_toEndOf="parent"
                         card_view:layout_constraintStart_toStartOf="parent"
@@ -77,8 +77,9 @@
 
                             <ImageView
                                 android:id="@+id/bg_image"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:imageURL="@{card.bg_image.image_url}"
                                 android:contentDescription="@string/background_image"
                                 card_view:layout_constraintBottom_toBottomOf="parent"
                                 card_view:layout_constraintEnd_toEndOf="parent"
@@ -91,26 +92,28 @@
                                 android:id="@+id/hc3_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/big_display"
-                                android:textSize="30sp"
                                 android:ems="7"
+                                android:text="@{card.title}"
                                 android:textColor="@color/white"
+                                android:textSize="30sp"
                                 android:textStyle="bold"
-                                card_view:layout_constraintVertical_bias="0.1"
-                                card_view:layout_constraintStart_toStartOf="@id/bg_image"
-                                card_view:layout_constraintTop_toBottomOf="@id/bg_image"
-                                card_view:layout_constraintBottom_toBottomOf="parent" />
+                                card_view:layout_constraintHorizontal_bias="0.4"
+                                card_view:layout_constraintBottom_toBottomOf="parent"
+                                card_view:layout_constraintEnd_toEndOf="@+id/bg_image"
+                                card_view:layout_constraintStart_toStartOf="parent"
+                                card_view:layout_constraintTop_toTopOf="parent"
+                                card_view:layout_constraintVertical_bias="0.45" />
 
                             <TextView
                                 android:id="@+id/hc3_description"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/this_is_a_s"
+                                android:text="@{card.description}"
                                 android:textColor="@color/white"
                                 android:textSize="12sp"
                                 android:ems="20"
                                 card_view:layout_constraintVertical_bias="0.2"
-                                card_view:layout_constraintStart_toStartOf="@id/bg_image"
+                                card_view:layout_constraintStart_toStartOf="@id/hc3_title"
                                 card_view:layout_constraintTop_toBottomOf="@id/hc3_title"
                                 card_view:layout_constraintBottom_toBottomOf="parent" />
 
