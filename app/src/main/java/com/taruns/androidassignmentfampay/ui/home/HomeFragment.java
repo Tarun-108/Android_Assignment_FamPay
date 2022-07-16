@@ -2,6 +2,7 @@ package com.taruns.androidassignmentfampay.ui.home;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.airbnb.epoxy.CarouselModel_;
 import com.airbnb.epoxy.EpoxyController;
 import com.airbnb.epoxy.EpoxyModel;
 import com.airbnb.epoxy.EpoxyRecyclerView;
+import com.google.android.material.snackbar.Snackbar;
 import com.taruns.androidassignmentfampay.Hc1BindingModel_;
 import com.taruns.androidassignmentfampay.Hc3BindingModel_;
 import com.taruns.androidassignmentfampay.Hc5BindingModel_;
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -44,22 +47,19 @@ public class HomeFragment extends Fragment {
     private HomeViewModel viewModel;
     private EpoxyRecyclerView recyclerView;
     private List<CardGroup> cardGroups;
-
-    private Boolean opened = false;
-
-
-
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
+    private SharedPreferences prefs;
 
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+        prefs = requireActivity().getSharedPreferences("DISMISSED TITLE", Context.MODE_PRIVATE);
+
+
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         viewModel.init();
@@ -74,6 +74,7 @@ public class HomeFragment extends Fragment {
 
         viewModel.getBrowserIntentLiveData().observe(this, this::startActivity);
 
+
     }
 
 
@@ -87,16 +88,24 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.home_recycler);
 
 
-
-
+        viewModel.getDismissedLiveData().observe(getViewLifecycleOwner(), booleanStringPair -> {
+            if(booleanStringPair.first){
+                Snackbar.make(view,"Alert Dismissed",Snackbar.LENGTH_SHORT).show();
+                SharedPreferences.Editor editor = requireActivity().getSharedPreferences("DISMISSED TITLE", Context.MODE_PRIVATE).edit();
+                editor.putBoolean(booleanStringPair.second, true);
+                editor.apply();
+            }else{
+                Snackbar.make(view,"You will be reminded on next visit",Snackbar.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }
 
+
     private void updateUI(List<CardGroup> cardGroups) {
 
         recyclerView.withModels(epoxyController -> {
-
 
             for (CardGroup cardGroup: cardGroups) {
 
@@ -104,6 +113,9 @@ public class HomeFragment extends Fragment {
                     case "HC3":{
                         List<Hc3BindingModel_> bindingModel_s = new ArrayList<>();
                         for (Card card: cardGroup.getCards()) {
+                            if(prefs.getBoolean(card.getTitle(), false)){
+                                break;
+                            }
                             bindingModel_s.add(new Hc3BindingModel_().id(0).card(card).viewModel(viewModel));
                         }
                         CarouselModel_ carouselModel_ = new CarouselModel_().id(cardGroup.getId()).models(bindingModel_s);
@@ -163,8 +175,6 @@ public class HomeFragment extends Fragment {
                 }
 
             }
-
-
             return null;
         });
 
