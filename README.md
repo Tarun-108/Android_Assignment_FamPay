@@ -3,7 +3,7 @@ AAL3 Android Assignment
 
 NOTE: APK is atttached to the repo named as "app-release.apk"
 
-## My TimeLine
+## TimeLine I followed
 
 https://docs.google.com/document/d/1YPnDBpoSKKbEswE4CQFzVRUs9BX5biytRbsrJGiM_Ec/edit?usp=sharing
 
