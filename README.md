@@ -44,5 +44,5 @@ https://docs.google.com/document/d/1YPnDBpoSKKbEswE4CQFzVRUs9BX5biytRbsrJGiM_Ec/
 * On click is used in place of LongPress.
 * HC9 height value is not added - it is wrapped content instead
 * isScrollable = false is not handled – the same UI for both cases.
-
+* Gradients are not added
 
