@@ -112,6 +112,11 @@ public class Card {
         this.formatted_description = formatted_description;
     }
 
+
+    //Binding functions
+
+
+
     @BindingAdapter("imageURL")
     public static void loadImage(ImageView view, String url){
         Glide.with(view.getContext()).load(url).into(view);
@@ -129,15 +134,6 @@ public class Card {
     public static void clickRedirect(CardView view, String url){
 
     }
-
-    @BindingAdapter("layout_height")
-    public static void setLayoutHeight(View view, int height) {
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = height;
-        view.setLayoutParams(layoutParams);
-    }
-
-
 
 
 

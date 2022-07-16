@@ -59,6 +59,9 @@ public class CardGroupRepository{
             @Override
             public void onResponse(@NonNull Call<CardResponseModel> call, @NonNull Response<CardResponseModel> response) {
                 if(response.body() != null){
+                    /*
+                     *  Rearranging the response in cardResponseModel so that HC3 is on top and the sequence is followed
+                     */
                     CardResponseModel cardResponseModel = response.body();
                     ArrayList<CardGroup> inSequence = new ArrayList<>();
                     for (String designType: designTypesInSequence) {

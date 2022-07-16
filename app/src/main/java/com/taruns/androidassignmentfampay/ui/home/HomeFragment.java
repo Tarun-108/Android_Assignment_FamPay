@@ -96,6 +96,7 @@ public class HomeFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress_circular);
         progressBar.setVisibility(View.VISIBLE);
 
+
         swipeRefreshLayout.setOnRefreshListener(() -> {
 //            viewModel.reInitializeRepoData();
             if(cardGroups != null){
@@ -106,6 +107,7 @@ public class HomeFragment extends Fragment {
 
 
 
+        // Saving data in shared pref if dismissed else just displaying the Snack bar only.
         viewModel.getDismissedLiveData().observe(getViewLifecycleOwner(), booleanStringPair -> {
             if(booleanStringPair.first){
                 Snackbar.make(view,"Alert Dismissed",Snackbar.LENGTH_SHORT).show();
@@ -122,6 +124,15 @@ public class HomeFragment extends Fragment {
 
 
     private void updateUI(List<CardGroup> cardGroups) {
+
+        /*
+         * Used Epoxy with data-binding to render the ui
+         * Epoxy an Library by AirBnb which automatically generates the Binding Models and Adapters
+         * when used with data binding
+         * Every card group is enclosed in the CarouselModel to render the UI accordingly
+
+         */
+
 
         recyclerView.withModels(epoxyController -> {
 
